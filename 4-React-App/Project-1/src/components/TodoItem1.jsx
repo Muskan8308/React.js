@@ -4,7 +4,7 @@ function TodoItem1()
         <div class="container text-center">
             <div class="row">
                 <div class="col-6">
-                    Buy Milk
+                    Go on a walk
                 </div>
                 <div class="col-4">
                     4-10-2023
