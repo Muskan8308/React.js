@@ -5,7 +5,12 @@ import style from "./Item.module.css";      // style is an object which helps to
 
 let Item = (props) => {
     return (
-        <li className={`${style['kg-item']} list-group-item`}>{props.food_items}</li>
+        <li className={`${style['kg-item']} list-group-item`}>
+            {props.food_items}
+            <button className = {`${style.button} btn btn-outline-light`}
+                onClick = {() => console.log(`${props.food_items} being bought`)}
+            > Buy </button>    
+        </li>
     )
     
 }
