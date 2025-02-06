@@ -18,7 +18,7 @@ function FoodItems({items}) {
                 // Here if first condition is true then it will return the 2nd condition.
             }
       
-            <h1>Healthy Foods</h1>
+            <h1 className = "heading">Healthy Foods</h1>
             <ul className="list-group list-group-flush">
             {
                 items.map((item) => (
