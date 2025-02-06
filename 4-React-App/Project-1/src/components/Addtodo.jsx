@@ -1,3 +1,5 @@
+import css from './Addtodo.module.css';
+
 function Addtodo()
 {
     return (
@@ -10,7 +12,7 @@ function Addtodo()
               <input type="date" placeholder= "Enter your todo"></input>
             </div>
             <div class="col-2">
-              <button type="button" class="btn btn-success kg-button">Add</button>
+              <button type="button" class= {`btn btn-success ${css["kgButton"]}`}>Add</button>
             </div>
           </div>
         </div>
