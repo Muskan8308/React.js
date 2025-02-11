@@ -25,25 +25,31 @@ function App() {
     // let setTextMethod = textState[1];   // 2nd value of array -> method to modify
 
     // Optimal or 2nd way to use useState :-
-    let [textVal, setTextVal] = useState(text);
-    console.log(`Current value -> ${textVal}`)
+    // let [textVal, setTextVal] = useState(text);
+    // console.log(`Current value -> ${textVal}`)
 
     let [items, setItems] = useState([
         "Socks", "Shoes", "Boots"
     ]);
 
     const onKeyDown = (event)=> {
-        if(event.key == 'Enter')
+        if(event.key === 'Enter')
         {
-            let newItem = event.target.value;
-            setItems(newItem);
+            let newItem = event.target.value;       // Getting the input's value
+            event.target.value = '';                // Making input empty after pressing enter
+            let newArray = [...items, newItem];     // Adding more items to the array
+            setItems(newArray);
         }
     }
 
+    const onClickEvent = (event) => {
+        console.log(event);
+    }
+
     return <>
-        <InputText handleOnChange = {handleOnChange}/>
-        <h4>{textVal}</h4>
-        <DisplayItems items ={items} handleKeyDown = {onKeyDown}></DisplayItems>
+        <InputText handleKeyDown = {onKeyDown} /* handleOnChange = {handleOnChange} */ />
+        {/* <h4>{textVal}</h4> */}
+        <DisplayItems items ={items} handleClick = {onClickEvent}></DisplayItems>
     </>
 }
 

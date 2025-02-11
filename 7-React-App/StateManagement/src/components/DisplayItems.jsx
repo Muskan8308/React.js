@@ -1,10 +1,12 @@
-function DisplayItems({items, onKeyDown}) {
+import style from './DisplayItems.module.css'
+
+function DisplayItems({items, handleClick}) {
     return ( 
     <>
-        <ul onKeyDown = {onKeyDown}>
+        <ul>
         {
             items.map((item, index) => (
-                <li key = {index} >{item}</li>))
+                <li key = {index} onClick = {handleClick} >{item}</li>))
         }
         </ul>
     </>
