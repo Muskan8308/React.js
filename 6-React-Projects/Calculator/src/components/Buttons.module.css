@@ -1,11 +1,26 @@
 .btns-container {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
+    background-color:rgb(21, 134, 172);
+    gap: 10px; /* Adds space between buttons */
+    padding: 10px; /* Adds padding inside the container */
+    border : 1px solid black;
+    border-radius: 5px;
+   
 }
 
 .btns {
-    height : 45px;
-    width : 45px;
-    margin : 3px;
+    padding: 15px 25px; /* Adds padding to buttons */
+    font-size: 18px; /* Increases font size */
+    border: 1px solid white; /* Removes default border */
+    height : 20%;
+    width : 30%;
+    border-radius: 5px; /* Rounds the corners of buttons */
+    background-color: lightgray; /* Sets button background color */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+    box-shadow: 0 2px 4px rgba(197, 39, 39, 0.1); /* Shadow for buttons */
+
 }
