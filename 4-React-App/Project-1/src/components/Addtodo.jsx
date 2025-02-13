@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { BiAlarmAdd } from "react-icons/bi";
 import css from './Addtodo.module.css';
 
 function Addtodo({onNewItem})
 {
-  const [todoName, setTodoName] = useState();
-  const [todoDate, setTodoDate] = useState();
+  const [todoName, setTodoName] = useState('');
+  const [todoDate, setTodoDate] = useState('');
 
   const handleChangeName = (event) => {
     setTodoName(event.target.value);
@@ -44,7 +45,8 @@ function Addtodo({onNewItem})
             type="button" 
             className= {`btn btn-success ${css["kgButton"]}`}
             onClick = {handleAddButtonClicked}
-            >Add</button>
+            ><BiAlarmAdd/>
+            </button>
           </div>
         </div>
       </div>

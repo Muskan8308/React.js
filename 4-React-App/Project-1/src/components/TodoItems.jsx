@@ -6,7 +6,13 @@ function TodoItems({todoItems, onDeleteClick})
     return <>
         <div className = {css["items-container"]}>   {/* convention to use className instead of class */}
             {
-                todoItems.map(item => <TodoItem todoName = {item.name} todoDate ={item.dueDate} onDeleteClick={onDeleteClick} ></TodoItem>
+                todoItems.map(item => 
+                <TodoItem 
+                    key = {item.name}
+                    todoName = {item.name}
+                    todoDate ={item.dueDate} 
+                    onDeleteClick={onDeleteClick} 
+                ></TodoItem>
                 )
             }
         </div>    

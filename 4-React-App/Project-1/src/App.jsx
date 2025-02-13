@@ -23,7 +23,6 @@ const initialTodos = [
 const [todoItems, setTodoItems] = useState([])
 
 const handleNewItems = (itemName, itemDate) => {
-  console.log(`New item is ${itemName}, ${itemDate}`);
   let newTodoItem = [...todoItems, {
     name : itemName,
     dueDate : itemDate

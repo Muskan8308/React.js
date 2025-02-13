@@ -1,4 +1,5 @@
 import css from './TodoItem.module.css'
+import {MdAutoDelete} from 'react-icons/md';
 
 function TodoItem({todoName, todoDate, onDeleteClick})
 {
@@ -16,7 +17,8 @@ function TodoItem({todoName, todoDate, onDeleteClick})
                     type="button" 
                     className={`btn btn-danger ${css["kg-button"]}`}
                     onClick = {() => onDeleteClick(todoName)}
-                    >Delete</button>
+                    ><MdAutoDelete/>
+                    </button>
                 </div>
             </div>
         </div>
