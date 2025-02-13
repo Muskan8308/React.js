@@ -1,6 +1,6 @@
 import css from './TodoItem.module.css'
 
-function TodoItem({todoName, todoDate})
+function TodoItem({todoName, todoDate, onDeleteClick})
 {
     return (
         <div className="container">
@@ -12,7 +12,11 @@ function TodoItem({todoName, todoDate})
                     {todoDate}
                 </div>
                 <div className="col-2">
-                    <button type="button" className={`btn btn-danger ${css["kg-button"]}`}>Delete</button>
+                    <button 
+                    type="button" 
+                    className={`btn btn-danger ${css["kg-button"]}`}
+                    onClick = {() => onDeleteClick(todoName)}
+                    >Delete</button>
                 </div>
             </div>
         </div>

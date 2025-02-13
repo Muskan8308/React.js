@@ -1,3 +1,6 @@
+    /* This is the item container */
+
 .items-container {
     text-align : left;
+    width : 100%;
 }

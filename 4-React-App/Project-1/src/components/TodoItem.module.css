@@ -1,8 +1,12 @@
 .kg-row {
 
     margin : 7px 3px;
+    display: flex; /* Make it a flex container */
+    justify-content: space-between;
 }
 
 .kg-button {
+    /* This is the delete button */
     min-width: 80px;
+    
 }

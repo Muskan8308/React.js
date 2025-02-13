@@ -4,6 +4,8 @@ input {
 
 .kgButton {
     min-width: 80px;
+    margin-bottom : 7px;
+    padding-left: 0px;
 }
 
 
