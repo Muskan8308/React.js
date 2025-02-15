@@ -23,11 +23,29 @@ const initialTodos = [
 const [todoItems, setTodoItems] = useState([])
 
 const handleNewItems = (itemName, itemDate) => {
+/*
+// Updation of state from previous state using -> Spread operator 
+  
   let newTodoItem = [...todoItems, {
     name : itemName,
     dueDate : itemDate
   }]
   setTodoItems(newTodoItem);
+
+*/
+
+// 2nd way 
+// Updation of state from previous state -> Functional updates
+
+  setTodoItems((currValue) => {
+      const newTodoItems = [...currValue,{
+      name : itemName,
+      dueDate : itemDate
+    }]
+    return newTodoItems;
+})
+  
+
 }
 
 // To delete items
