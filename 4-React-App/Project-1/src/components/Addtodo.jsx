@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { BiAlarmAdd } from "react-icons/bi";
 import css from './Addtodo.module.css';
 
 function Addtodo({onNewItem})
 {
+  /*
   const [todoName, setTodoName] = useState('');
   const [todoDate, setTodoDate] = useState('');
 
@@ -14,41 +15,51 @@ function Addtodo({onNewItem})
   const handleChangeDate = (event) => {
     setTodoDate(event.target.value);
   }
+*/
 
-  const handleAddButtonClicked = () => {
+// Instead of useState, using useRef hook
+  const todoEle = useRef();
+  const dateEle = useRef();
+
+  const handleAddButtonClicked = (event) => {
+    event.preventDefault();
+    const todoName = todoEle.current.value;     // To access the current value of the element
+    const todoDate = dateEle.current.value;
+    todoEle.current.value = "";
+    dateEle.current.value = "";
     onNewItem(todoName, todoDate);
-    setTodoName("");
-    setTodoDate("");
+    // setTodoName("");
+    // setTodoDate("");
   }
 
   return (
       <div className="container">
-        <div className="row kg-row">
+        <form className="row kg-row" onSubmit = {handleAddButtonClicked}>
           <div className="col-6">
             <input 
             type="text" 
-            value = {todoName}
+            // value = {todoName}
+            ref = {todoEle}
             placeholder= "Enter your todo"
-            onChange = {handleChangeName}
+            // onChange = {handleChangeName}
             ></input>
           </div>
           <div className="col-4">
             <input 
             type="date" 
-            value = {todoDate}
-            placeholder= "Enter your todo"
-            onChange = {handleChangeDate}
+            // value = {todoDate}
+            ref = {dateEle}
+            // onChange = {handleChangeDate}
             ></input>
           </div>
           <div className="col-2">
             <button 
-            type="button" 
+            type="submit" 
             className= {`btn btn-success ${css["kgButton"]}`}
-            onClick = {handleAddButtonClicked}
             ><BiAlarmAdd/>
             </button>
           </div>
-        </div>
+        </form>
       </div>
   )
 }
