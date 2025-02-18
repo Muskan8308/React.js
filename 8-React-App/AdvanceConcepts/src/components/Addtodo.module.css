@@ -1,0 +1,11 @@
+input {
+    width : 100%;
+}
+
+.kgButton {
+    min-width: 80px;
+    margin-bottom : 7px;
+    padding-left: 0px;
+}
+
+
