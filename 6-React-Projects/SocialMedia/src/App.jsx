@@ -6,6 +6,7 @@ import { useState } from "react";
 import SideBar from "./components/SideBar";
 import CreatePost from "./components/CreatePost";
 import PostList from "./components/PostList";
+import PostListProvider from "./store/post-lists-store";
 
 function App() {
   // We need to declare a state by which we select the content to show on the page
@@ -14,19 +15,24 @@ function App() {
 
   return (
     <>
-      <div className="app-container">
-        <SideBar selectedTab={selectedTab} setSelectedTab={setSelectedTab}></SideBar>
-        <div className="content">
-          <Header></Header>
-          {selectedTab === "Home" ? (
-            <PostList></PostList>
-          ) : (
-            <CreatePost></CreatePost>
-          )}
+      <PostListProvider>
+        <div className="app-container">
+          <SideBar
+            selectedTab={selectedTab}
+            setSelectedTab={setSelectedTab}
+          ></SideBar>
+          <div className="content">
+            <Header></Header>
+            {selectedTab === "Home" ? (
+              <PostList></PostList>
+            ) : (
+              <CreatePost></CreatePost>
+            )}
 
-          <Footer></Footer>
+            <Footer></Footer>
+          </div>
         </div>
-      </div>
+      </PostListProvider>
     </>
   );
 }
