@@ -4,6 +4,7 @@ export const PostList = createContext({
   postList: [],
   addPost: () => {},
   deletePost: () => {},
+  addInitialPosts: () => {},
 });
 
 const PostListReducer = (currPostList, action) => {
@@ -12,17 +13,26 @@ const PostListReducer = (currPostList, action) => {
     newPostList = currPostList.filter(
       (post) => post.id !== action.payload.postId
     );
+  } else if (action.type === "ADD_INITIAL_POSTS") {
+    newPostList = action.payload.posts;
   } else if (action.type === "ADD_POST") {
     newPostList = [action.payload, ...currPostList];
   }
+
   return newPostList;
 };
 
 function PostListProvider({ children }) {
-  const [postList, dispatchPostList] = useReducer(
-    PostListReducer,
-    DEFAULT_POST_LIST
-  );
+  const [postList, dispatchPostList] = useReducer(PostListReducer, []);
+
+  const addInitialPosts = (posts) => {
+    dispatchPostList({
+      type: "ADD_INITIAL_POSTS",
+      payload: {
+        posts,
+      },
+    });
+  };
 
   const addPost = (userId, postTitle, postBody, reactions, tags) => {
     dispatchPostList({
@@ -53,6 +63,7 @@ function PostListProvider({ children }) {
         postList: postList,
         addPost: addPost,
         deletePost: deletePost,
+        addInitialPosts: addInitialPosts,
       }}
     >
       {children}
@@ -60,6 +71,7 @@ function PostListProvider({ children }) {
   );
 }
 
+/*
 const DEFAULT_POST_LIST = [
   {
     id: "1",
@@ -78,4 +90,6 @@ const DEFAULT_POST_LIST = [
     tags: ["graduate", "btech", "engineer"],
   },
 ];
+*/
+
 export default PostListProvider;
