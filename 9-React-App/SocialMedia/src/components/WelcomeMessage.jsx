@@ -1,14 +1,7 @@
-function WelcomeMessage({OnGetPostsClick}) {
+function WelcomeMessage() {
   return (
     <center>
       <h2 className="welcome">There is no post yet...</h2>
-      <button
-        type="button"
-        onClick={OnGetPostsClick}
-        className="btn btn-primary"
-      >
-        Create Post
-      </button>
     </center>
   );
 }

@@ -18,7 +18,9 @@ function Post({ post }) {
           </span>
           <p className="card-text">{post.body}</p>
           {post.tags.map((tag) => (
-            <span key={tag} className="badge text-bg-primary hashtag">{tag}</span>
+            <span key={tag} className="badge text-bg-primary hashtag">
+              {tag}
+            </span>
           ))}
           <div className="alert alert-primary reactions" role="alert">
             This post has total {post.reactions.likes} reactions.
