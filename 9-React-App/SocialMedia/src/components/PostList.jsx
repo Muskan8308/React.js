@@ -9,7 +9,7 @@ function PostList() {
   // const [dataFetched, setDataFetched] = useState(false);
   const [fetching, setFetching] = useState(false);
 
-  useEffect(() => {
+ /* useEffect(() => {
     setFetching(true);
 
     const controller = new AbortController();
@@ -28,7 +28,7 @@ function PostList() {
       controller.abort();
     };
   }, []);
-
+*/
   return (
     <>
       {fetching && <LoadingSpinner />}

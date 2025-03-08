@@ -1,4 +1,4 @@
-import { createContext, useCallback, useReducer } from "react";
+import { createContext, useCallback, useReducer, useMemo } from "react";
 
 export const PostList = createContext({
   postList: [],
@@ -34,17 +34,10 @@ function PostListProvider({ children }) {
     });
   };
 
-  const addPost = (userId, postTitle, postBody, reactions, tags) => {
+  const addPost = (post) => {
     dispatchPostList({
       type: "ADD_POST",
-      payload: {
-        id: Date.now(),
-        title: postTitle,
-        body: postBody,
-        reactions: reactions,
-        userId: userId,
-        tags: tags,
-      },
+      payload: post,
     });
   };
 
@@ -74,6 +67,13 @@ function PostListProvider({ children }) {
     </PostList.Provider>
   );
 }
+
+/*
+Using useMemo hook similar to useCallback (for memiozed functions), for memiozed values .
+
+  let arr = [5, 7, 9, 3, 2, 2, 6, 2];
+  let sortedArray = useMemo(() => arr.sort(), [arr]);
+*/
 
 /*
 const DEFAULT_POST_LIST = [
