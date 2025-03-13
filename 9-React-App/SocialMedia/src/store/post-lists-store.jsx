@@ -1,10 +1,11 @@
-import { createContext, useCallback, useReducer, useMemo } from "react";
+import { createContext, useEffect, useCallback, useReducer, useMemo, useState } from "react";
 
 export const PostList = createContext({
   postList: [],
   addPost: () => {},
   deletePost: () => {},
-  addInitialPosts: () => {},
+  fetching : false,
+  // addInitialPosts: () => {},
 });
 
 const PostListReducer = (currPostList, action) => {
@@ -24,6 +25,28 @@ const PostListReducer = (currPostList, action) => {
 
 function PostListProvider({ children }) {
   const [postList, dispatchPostList] = useReducer(PostListReducer, []);
+
+  const [fetching, setFetching] = useState(false);
+
+  useEffect(() => {
+    setFetching(true);
+
+    const controller = new AbortController();
+    const signals = controller.signal;
+
+    fetch("https://dummyjson.com/posts", { signals })
+      .then((res) => res.json())
+      .then((data) => {
+        addInitialPosts(data.posts);
+        setFetching(false);
+      });
+
+    // cleanup method
+    return () => {
+      console.log("Cleaning up code");
+      controller.abort();
+    };
+  }, []);
 
   const addInitialPosts = (posts) => {
     dispatchPostList({
@@ -60,7 +83,8 @@ function PostListProvider({ children }) {
         postList: postList,
         addPost: addPost,
         deletePost: deletePost,
-        addInitialPosts: addInitialPosts,
+        fetching : fetching,
+        // addInitialPosts: addInitialPosts,
       }}
     >
       {children}
