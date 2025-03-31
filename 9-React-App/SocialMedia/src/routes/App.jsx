@@ -1,12 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { useState } from "react";
-import SideBar from "./components/SideBar";
-import CreatePost from "./components/CreatePost";
-import PostList from "./components/PostList";
-import PostListProvider from "./store/post-lists-store";
+import SideBar from "../components/SideBar";
+import CreatePost from "../components/CreatePost";
+import PostList from "../components/PostList";
+import PostListProvider from "../store/post-lists-store";
+import { Outlet } from "react-router-dom";
 
 function App() {
   // We need to declare a state by which we select the content to show on the page
@@ -23,11 +24,14 @@ function App() {
           ></SideBar>
           <div className="content">
             <Header></Header>
-            {selectedTab === "Home" ? (
+            {/* {selectedTab === "Home" ? (
               <PostList></PostList>
             ) : (
               <CreatePost></CreatePost>
-            )}
+            )} */}
+
+            {/* Taken from react-router-dom to display */}
+            <Outlet/>     
 
             <Footer></Footer>
           </div>

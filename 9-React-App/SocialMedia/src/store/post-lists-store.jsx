@@ -4,7 +4,7 @@ export const PostList = createContext({
   postList: [],
   addPost: () => {},
   deletePost: () => {},
-  fetching : false,
+  // fetching : false,
   // addInitialPosts: () => {},
 });
 
@@ -26,8 +26,9 @@ const PostListReducer = (currPostList, action) => {
 function PostListProvider({ children }) {
   const [postList, dispatchPostList] = useReducer(PostListReducer, []);
 
-  const [fetching, setFetching] = useState(false);
+  // const [fetching, setFetching] = useState(false);
 
+/*
   useEffect(() => {
     setFetching(true);
 
@@ -47,6 +48,7 @@ function PostListProvider({ children }) {
       controller.abort();
     };
   }, []);
+*/
 
   const addInitialPosts = (posts) => {
     dispatchPostList({
@@ -83,7 +85,7 @@ function PostListProvider({ children }) {
         postList: postList,
         addPost: addPost,
         deletePost: deletePost,
-        fetching : fetching,
+        // fetching : fetching,
         // addInitialPosts: addInitialPosts,
       }}
     >

@@ -1,13 +1,17 @@
 import { useContext, useRef } from "react";
 import { PostList } from "../store/post-lists-store";
+import { useNavigate } from "react-router-dom";
+import { Form, redirect } from "react-router-dom";
 
 function CreatePost() {
+  /*
   const { addPost } = useContext(PostList);
   const userIdEle = useRef();
   const postTitleEle = useRef();
   const postBodyEle = useRef();
   const reactionsEle = useRef();
   const tagsEle = useRef();
+  const navigate = useNavigate()
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -23,6 +27,7 @@ function CreatePost() {
     reactionsEle.current.value = "";
     tagsEle.current.value = "";
 
+    // We will move this code of block (fetch) in the action function
     fetch("https://dummyjson.com/posts/add", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -37,21 +42,24 @@ function CreatePost() {
       .then((res) => res.json())
       .then((post) => {
         addPost(post);
+        navigate("/")
       });
   };
+*/
 
   return (
     <>
-      <form className="create-post" onSubmit={handleSubmit}>
+      <Form method="POST" className="create-post">
         <div className="mb-3">
           <label htmlFor="userId" className="form-label">
             Enter your userID here
           </label>
           <input
-            ref={userIdEle}
+            // ref={userIdEle}
+            name="userId"
             type="text"
             className="form-control"
-            id="title"
+            id="userId"
             placeholder="Your User Id"
             aria-describedby="emailHelp"
           />
@@ -61,7 +69,8 @@ function CreatePost() {
             Post Title
           </label>
           <input
-            ref={postTitleEle}
+            // ref={postTitleEle}
+            name="title"
             type="text"
             className="form-control"
             id="title"
@@ -74,10 +83,11 @@ function CreatePost() {
             Post Content
           </label>
           <textarea
-            ref={postBodyEle}
+            // ref={postBodyEle}
+            name="body"
             type="text"
             className="form-control"
-            id="title"
+            id="body"
             rows="6"
             placeholder="Tell us more about it..."
             aria-describedby="emailHelp"
@@ -88,10 +98,11 @@ function CreatePost() {
             Number of reactions
           </label>
           <input
-            ref={reactionsEle}
+            // ref={reactionsEle}
+            name="reactions"
             type="text"
             className="form-control"
-            id="title"
+            id="reactions"
             placeholder="Reactions"
             aria-describedby="emailHelp"
           />
@@ -101,10 +112,11 @@ function CreatePost() {
             Tags
           </label>
           <input
-            ref={tagsEle}
+            // ref={tagsEle}
+            name="tags"
             type="text"
             className="form-control"
-            id="title"
+            id="tags"
             placeholder="Add your tags"
             aria-describedby="emailHelp"
           />
@@ -112,9 +124,30 @@ function CreatePost() {
         <button type="submit" className="btn btn-primary">
           Post
         </button>
-      </form>
+      </Form>
     </>
   );
+}
+
+export async function createPostAction(data) {
+  const formData = await data.request.formData();
+  const postData = Object.fromEntries(formData);
+  
+/*
+  fetch("https://dummyjson.com/posts/add", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(postData),
+  })
+    .then((res) => res.json())
+    .then((post) => {
+      addPost(post);
+      navigate("/");
+    });
+*/
+// There is no need of writing the fetch block, here its all get done automatically.
+
+  return redirect("/");
 }
 
 export default CreatePost;

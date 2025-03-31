@@ -1,4 +1,6 @@
-function SideBar({ selectedTab, setSelectedTab }) {
+import { Link } from "react-router-dom";
+
+function SideBar() {
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary sidebar"
@@ -15,45 +17,28 @@ function SideBar({ selectedTab, setSelectedTab }) {
       </a>
       <hr />
       <ul className="nav nav-pills flex-column mb-auto">
-        <li className="nav-item" onClick={() => setSelectedTab("Home")}>
-          <a
-            href="#"
-            className={`nav-link text-black ${
-              selectedTab === "Home" && "active text-white"
-            }`}
+        <li className="nav-item" >
+          <Link
+            to="/"
+            className="nav-link text-black"
             aria-current="page"
           >
             <svg className="bi pe-none me-2" width="16" height="16">
               <use xlinkHref="#home"></use>
             </svg>
             Home
-          </a>
+          </Link>
         </li>
-        <li onClick={() => setSelectedTab("Post")}>
-          <a
-            href="#"
-            className={`nav-link text-black ${
-              selectedTab === "Post" && "active text-white"
-            }`}
+        <li>
+          <Link
+            to="/create-post"
+            className={`nav-link text-black`}
           >
             <svg className="bi pe-none me-2" width="16" height="16">
               <use xlinkHref="#speedometer2"></use>
             </svg>
             Post
-          </a>
-        </li>
-        <li onClick={() => setSelectedTab("Profile")}>
-          <a
-            href="#"
-            className={`nav-link text-black ${
-              selectedTab === "Profile" && "active text-white"
-            }`}
-          >
-            <svg className="bi pe-none me-2" width="16" height="16">
-              <use xlinkHref="#people-circle"></use>
-            </svg>
-            Profile
-          </a>
+          </Link>
         </li>
       </ul>
       <hr />
