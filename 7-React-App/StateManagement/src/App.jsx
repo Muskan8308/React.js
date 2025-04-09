@@ -17,7 +17,7 @@ function App() {
         setTextVal(event.target.value);
     }
 
-    let text = "Hii I am a human being"
+    let text = "Hii I am a living being and just living the life"
 
     // Basic way to use useState :-
     // let textState = useState(text);     // This will return an array
